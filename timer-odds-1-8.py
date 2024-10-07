@@ -1,9 +1,8 @@
 import random
 import math
 
-def time():
-    # time = random.randint(0, 7200000)
-    time = random.randint(3600000, 7200000)
+def time(time):
+    # time = random.randint(3600000, 7200000) <- set time between 1 and 2 hours
     hour = math.floor(time / 3600000)
     minute = math.floor((time % 3600000) / 60000)
     second = math.floor((time % 60000) / 1000)
@@ -19,16 +18,14 @@ def time():
     for count in digit_counts:
         if count > 1:
             return False
-    if digit_counts[9] > 0 or digit_counts[0] > 0:
-        return False
     return True
 
 success_count = 0
-for i in range(10000000):
-    if time():
+for i in range(3600000,7200000):
+    if time(i):
         success_count += 1
 
 print("Total successes:", success_count)
-print("Success rate:", success_count / 1000000)
+print("Success rate:", success_count / (7200000 - 3600000))
 
 
